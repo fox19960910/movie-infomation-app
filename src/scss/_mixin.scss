@@ -1,0 +1,12 @@
+@mixin flex ($ai,$jc,$directionColumn : false) {
+    display: flex;
+    align-items: $ai;
+    justify-content: $jc;
+    @if(directionColumn){
+        flex-direction: column;
+    }
+}
+
+@mixin overlay {
+    background-color: rgba($color: #000000, $alpha: 0.6)
+}
