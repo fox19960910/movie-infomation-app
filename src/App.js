@@ -11,11 +11,11 @@ function App() {
   return (
    <Router>
      <Route render={(props) => (
-       <>
+       <div>
         <Header {...props}/>
         <Routes />
         <Footer/>
-       </>
+       </div>
      )}/>
    </Router>
   );

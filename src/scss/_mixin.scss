@@ -1,8 +1,8 @@
-@mixin flex ($ai,$jc,$directionColumn : false) {
+@mixin flex ($ai,$jc,$directionColumn:false) {
     display: flex;
     align-items: $ai;
     justify-content: $jc;
-    @if(directionColumn){
+    @if($directionColumn){
         flex-direction: column;
     }
 }

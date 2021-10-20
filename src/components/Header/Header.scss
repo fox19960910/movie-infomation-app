@@ -1,0 +1,29 @@
+@use '../../scss/' as *;
+
+.logo{
+    a{
+        @include flex(center,center);
+    }
+    a img {
+        width:10rem;
+        height: auto;
+    }
+}
+.header{
+    width: 100%;
+    height: $header-h;
+    position: fixed;
+    inset:0;
+    @include flex(center,center);
+    &__wrap{
+        @include flex(center,space-between);
+    }
+
+}
+.navigation{
+    flex-grow: 1;
+    ul{
+        @include flex(center,flex-end);
+
+    }
+}
