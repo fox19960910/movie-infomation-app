@@ -1,75 +1,73 @@
 @use './scss/' as *;
 
-*{
-    padding:0;
-    margin:0;
-    box-sizing: border-box;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
-html{
-    font-size:100%;
-        @include tablet {
-            font-size:80%;
-
-        }
-        @include mobile {
-            font-size:60%;
-        }
-
+html {
+  font-size: 100%;
+  @include tablet {
+    font-size: 80%;
+  }
+  @include mobile {
+    font-size: 60%;
+  }
 }
-body{
-    font-family: $primary-font;
-    font-weight: 400;
-    line-height: 1.5;
-    background-color: $body-bg;
-    color: $txt-color;
+body {
+  font-family: $primary-font;
+  font-weight: 400;
+  line-height: 1.5;
+  background-color: $body-bg;
+  color: $txt-color;
 
-    @include mobile{
-        margin-bottom: 3rem;
-    }
-
+  @include mobile {
+    margin-bottom: 3rem;
+  }
 }
 
-a{
-    text-decoration: none;
-    color:unset
+a {
+  text-decoration: none;
+  color: unset;
 }
 
-ul{
-    list-style-type: none;
+ul {
+  list-style-type: none;
 }
-button, input {
-    outline:0;
+button,
+input {
+  outline: 0;
 }
-img{
-    max-width: 100%;
+img {
+  max-width: 100%;
 }
 iframe {
-    border:0;
+  border: 0;
 }
 
-.container{
-    max-width: 1660px;
-    margin:auto;
-    @include tablet{
-        width: 90%;
-    }
+.container {
+  max-width: 1660px;
+  margin: auto;
+  width: calc(1660 / 1920) * 100%;
+  @include tablet {
+    width: 90%;
+  }
 }
 
-.mb-3{
-    margin-bottom: 3rem;
+.mb-3 {
+  margin-bottom: 3rem;
 }
-.mb-2{
-    margin-bottom: 2rem;
+.mb-2 {
+  margin-bottom: 2rem;
 }
-.section{
-    padding:0 2rem;
-    &__header{
-        @include flex(center, between);
-    }
+.section {
+  padding: 0 2rem;
+  &__header {
+    @include flex(center, between);
+  }
 }
-@media (hover:hover) {
-    a:hover{
-        color:$primary-color;
-    }
+@media (hover: hover) {
+  a:hover {
+    color: $primary-color;
+  }
 }
-
