@@ -1,13 +1,18 @@
 @use "./variables";
+@mixin landscape {
+  @media only screen and (max-width: variables.$landscape-w) {
+    @content;
+  }
+}
 
 @mixin tablet {
-    @media only screen and (max-width:variables.$tablet-w) {
-        @content;
-    }
+  @media only screen and (max-width: variables.$tablet-w) {
+    @content;
+  }
 }
 
 @mixin mobile {
-    @media only screen and (max-width:variables.$mobile-w ) {
-        @content;
-    }
+  @media only screen and (max-width: variables.$mobile-w) {
+    @content;
+  }
 }

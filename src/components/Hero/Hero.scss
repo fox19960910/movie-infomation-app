@@ -1,46 +1,108 @@
 @use '../../scss/' as *;
 
-.hero{
-    // .swiper-container .swiper-slide img {
-    //     width: 100%;
-    //     object-fit: cover;
-    // }
+.hero {
+  // .swiper-container .swiper-slide img {
+  //     width: 100%;
+  //     object-fit: cover;
+  // }
 
-    margin-bottom:3rem;
-    &__item{
-        padding: 9rem 0;
-        width: 100%;
-        position: relative;
-        background-position: center;
-        background-size:cover;
-        background-repeat: no-repeat;
-
+  margin-bottom: 3rem;
+  &__item {
+    padding: 9rem 0;
+    width: 100%;
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    @include landscape {
+      padding: 8rem 0;
+    }
     &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        @include overlay();
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      @include overlay();
     }
 
     &::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 100px;
-        background-image: linear-gradient(to top, $body-bg, rgba(#000, 0));
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background-image: linear-gradient(to top, $body-bg, rgba(#000, 0));
     }
+  }
+  &__content {
+    @include flex(center, center);
+    position: relative;
+  }
+  &__info {
+    width: 55%;
+    padding: 0 3rem;
+
+    @include tablet {
+      width: 100%;
     }
-    &__content{
-        @include flex(center,center);
-        position: relative;
+
+    & > * ~ * {
+      margin-top: 3rem;
     }
-    &__info{
-        width: 55% ;
-        padding:0 3rem;
+  }
+  &__title {
+    font-size: 5rem;
+    font-weight: 700;
+    line-height: 1;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    @include landscape {
+      font-size: 4rem;
     }
+  }
+  &__overview {
+    font-weight: 700;
+    transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
+  }
+  .btns > * ~ * {
+    margin-left: 1rem;
+  }
+  .btns {
+    transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
+  }
+  &__title,
+  &__overview,
+  .btns {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+
+  &__poster {
+    flex: 1;
+    @include flex(center, center);
+
+    img {
+      border-radius: $border-radius;
+      box-shadow: $box-shadow;
+      transform: scale(0);
+      transition: transform 0.7s ease;
+      @include landscape {
+        max-width: 20rem;
+      }
+      @include tablet {
+        display: none;
+      }
+    }
+  }
+  &__item.active &__title,
+  &__item.active &__overview,
+  &__item.active .btns {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  &__item.active &__poster img {
+    transform: scale(1);
+  }
 }

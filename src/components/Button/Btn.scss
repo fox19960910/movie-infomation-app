@@ -5,28 +5,34 @@ button {
   font-family: $primary-font;
 }
 .btn {
-  background-image: linear-gradient(92.88deg, $primary-light-color 9.16%, $primary-color 43.89%, $primary-dark-color 64.72%);
+  background-image: linear-gradient(
+    92.88deg,
+    $primary-light-color 9.16%,
+    $primary-color 43.89%,
+    $primary-dark-color 64.72%
+  );
   border-radius: $border-radius;
-  border-style: none;
+  border: 3px solid transparent;
   box-sizing: border-box;
   color: $light-color;
   flex-shrink: 0;
   font-size: 1.2rem;
   font-weight: 500;
-  padding: 0.9rem 1.8rem;
+  padding: 0.5rem 1.8rem;
   text-align: center;
   text-shadow: rgba($dark-color, 0.25) 0 3px 8px;
-  transition: all .5s;
+  transition: all 0.5s;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  &:hover{
+  &:hover {
     box-shadow: rgba($primary-dark-color, 0.502) 0 1px 30px;
-    transition-duration: .1s;
+    transition-duration: 0.1s;
   }
 }
 
 .btn-outline {
+  background-image: unset;
   border: 3px solid $light-color;
   background-color: transparent;
   color: $light-color;
@@ -43,5 +49,3 @@ button {
   padding: 0.25rem 1.5rem;
   font-size: 1rem;
 }
-
-
