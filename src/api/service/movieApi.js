@@ -1,19 +1,5 @@
-import axiosClient from '../axiosClient'
-
-export const category = {
-    MOVIE:'movie',
-    TV:'tv'
-}
-export const movieType = {
-    UP_COMING:'upcoming',
-    POPULAR:'popular',
-    TOP_RATED:'top_rated',
-}
-export const tvType = {
-    POPULAR:'popular',
-    TOP_RATED:'top_rated',
-    ON_THE_AIR:'on_the_air',
-}
+import axiosClient from '../axiosClient';
+import {category,movieType,tvType} from '../../utils/constant'
 
 
 const movieApi = {
@@ -30,18 +16,18 @@ const movieApi = {
         return axiosClient.get(url,{params:{}})
     },
     search : (cat, params) => {
-        const url =  'search' + category[cate];
+        const url =  'search' + category[cat];
         return axiosClient.get(url,params)
     },
     detail : (cat,id, params) => {
         const url =  category[cat] + '/' + id 
         return axiosClient.get(url,params)
     },
-    credits: (cat, id) => {
+    credits: (cat, id, params ) => {
         const url = category[cat] + '/' + id + '/credits';
         return axiosClient.get(url, params)
     },
-    similar: (cat, id) => {
+    similar: (cat, id, params) => {
         const url = category[cat] + '/' + id + '/similar';
         return axiosClient.get(url, params)
     }

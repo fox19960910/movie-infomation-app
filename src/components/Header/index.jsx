@@ -23,7 +23,6 @@ const Header = () => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    console.log("headerRef", headerRef.current);
     const shrinkHeader = () => {
       if (
         document.body.scrollTop > 100 ||

@@ -5,20 +5,24 @@ button {
   font-family: $primary-font;
 }
 .btn {
-  border: 4px solid transparent;
-  background-color: $primary-color;
-  color: $light-color;
+  background-image: linear-gradient(92.88deg, $primary-light-color 9.16%, $primary-color 43.89%, $primary-dark-color 64.72%);
   border-radius: $border-radius;
-
-  padding: 0.5rem 1.8rem;
-  font-size: 1.5rem;
-  font-weight: 600;
-  box-shadow: 0px 0px 7px 8px $primary-light-color;
-  transition: box-shadow 0.3s ease;
-  position: relative;
-
-  &:hover {
-    box-shadow: 0px 0px 7px 15px $primary-light-color;
+  border-style: none;
+  box-sizing: border-box;
+  color: $light-color;
+  flex-shrink: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 0.9rem 1.8rem;
+  text-align: center;
+  text-shadow: rgba($dark-color, 0.25) 0 3px 8px;
+  transition: all .5s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  &:hover{
+    box-shadow: rgba($primary-dark-color, 0.502) 0 1px 30px;
+    transition-duration: .1s;
   }
 }
 
@@ -39,3 +43,5 @@ button {
   padding: 0.25rem 1.5rem;
   font-size: 1rem;
 }
+
+

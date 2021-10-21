@@ -11,7 +11,7 @@ const Btn = ({ className, onClick, children, ...props }) => {
 };
 
 Btn.propTypes = {
-  onClick: propTypes.func,
+  onClick: PropTypes.func,
 };
 
 export default Btn;

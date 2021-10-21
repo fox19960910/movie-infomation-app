@@ -50,6 +50,7 @@
       @include flex(flex-start, flex-start, true);
       height: 100%;
       padding: 1.25rem;
+      padding-left:3rem;
     }
   }
   ul li {
@@ -63,6 +64,10 @@
       margin-right: 0;
       margin-bottom: 1rem;
     }
+  }
+  ul li a {
+      font-weight: 700;
+      font-size:1.2rem;
   }
 }
 .mobile-nav-button {
