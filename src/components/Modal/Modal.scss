@@ -1,0 +1,42 @@
+@use '.././../scss/' as *;
+
+.modal {
+    @include flex(center, center);
+    position: fixed;
+    width:100%;
+    z-index:999;
+    top:0;
+    left:0;
+    right:0;
+    bottom: 0;
+    overflow:auto;
+    background-color:rgba($color:$dark-color,$alpha:0.4);
+    // opacity:0;
+    // visibility:hidden;
+
+    &__content{
+        padding:2rem;
+        background-color:$body-bg;
+        width:50%;
+        position: relative;
+        @include tablet {
+            width: 80%;
+        }
+    }
+    &__close{
+        position: absolute;
+        right:5px;
+        top:5px;
+        font-size:1.5rem;
+        cursor: pointer;
+
+        &:hover{
+            color:$primary-color;
+        }
+    }
+
+}
+
+@keyframes moveDown{
+    
+}

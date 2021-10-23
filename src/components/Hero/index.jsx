@@ -8,11 +8,13 @@ import movieApi from "../../api/service/movieApi";
 import { movieType } from "../../utils/constant";
 import apiConfig from "../../api/apiConfig";
 
-import Btn, { BtnOutline } from "../Button/Btn";
+import Btn from "../Button/Btn";
 import { useHistory } from "react-router-dom";
+import ModalTrailer from "../Modal/ModalTrailer";
 
 const Hero = () => {
   const [movieItems, setMovieItems] = useState([]);
+
   SwiperCore.use([Autoplay]);
   useEffect(() => {
     const getMovies = async () => {
@@ -27,6 +29,7 @@ const Hero = () => {
     getMovies();
   }, []);
 
+  
   return (
     <div className="hero">
       <Swiper
@@ -46,16 +49,24 @@ const Hero = () => {
             </SwiperSlide>
           ))}
       </Swiper>
+
     </div>
   );
 };
 
 const HeroItems = ({ item, className }) => {
+
+  const [activeModal, setActiveModal] = useState(false)
   const history = useHistory();
   const background =
     item && apiConfig.originalImage(item.backdrop_path)
       ? apiConfig.originalImage(item.backdrop_path)
       : apiConfig.originalImage(item.backdrop_path);
+
+  const watchTrailer = (id) => {
+
+    setActiveModal(true)
+  }
   return (
     <div
       className={`hero__item ${className ? className : ""}`}
@@ -69,7 +80,7 @@ const HeroItems = ({ item, className }) => {
             <Btn onClick={() => history.push("/movie" + item.id)}>
               Watch now
             </Btn>
-            <Btn className="btn-outline" onClick={() => console.log("trailer")}>
+            <Btn className="btn-outline" onClick={() => watchTrailer(item.id)}>
               Watch trailer
             </Btn>
           </div>
@@ -79,6 +90,7 @@ const HeroItems = ({ item, className }) => {
           <img src={apiConfig.w500Image(item.poster_path)} alt={item.title} />
         </div>
       </div>
+      <ModalTrailer item={item} active={activeModal}></ModalTrailer>
     </div>
   );
 };
