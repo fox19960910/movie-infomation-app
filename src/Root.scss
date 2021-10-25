@@ -71,11 +71,14 @@ iframe {
     color: $primary-color;
   }
 }
-.iframe-trailer{
+.iframe-trailer {
   width: 100%;
   height: 500px;
 
-  @include mobile{
+  @include landscape {
+    height: 400px;
+  }
+  @include mobile {
     height: 200px;
   }
 }

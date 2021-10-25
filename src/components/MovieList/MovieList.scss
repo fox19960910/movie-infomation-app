@@ -1,12 +1,15 @@
 @use '../../scss/' as *;
-.movie-list{
-    .swiper-slide{
-        width:15%;
-        @include tablet{
-            width: 30%;
-        }
-        @include mobile{
-            width: 40%;
-        }
+.movie-list {
+  .swiper-slide {
+    width: 15%;
+    // @include landscape {
+    //   width: 20%;
+    // }
+    @include tablet {
+      width: 30%;
     }
+    @include mobile {
+      width: 40%;
+    }
+  }
 }
