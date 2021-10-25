@@ -14,7 +14,8 @@ import ModalTrailer from "../Modal/ModalTrailer";
 
 const Hero = () => {
   const [movieItems, setMovieItems] = useState([]);
-
+  const [movieItem, setMovieItem] = useState(null);
+  const [activeModal, setActiveModal] = useState(false)
   SwiperCore.use([Autoplay]);
   useEffect(() => {
     const getMovies = async () => {
@@ -29,44 +30,48 @@ const Hero = () => {
     getMovies();
   }, []);
 
-  
+  const watchTrailerMovie =   (item) => {
+     setMovieItem(item)
+     setActiveModal(true)
+  }
   return (
-    <div className="hero">
-      <Swiper
-        modules={[Autoplay]}
-        grabCursor={true}
-        spaceBetween={0}
-        slidesPerView={1}
-        // autoplay={{delay:3000}}
-      >
-        {movieItems &&
-          movieItems.length > 0 &&
-          movieItems.map((item, index) => (
-            <SwiperSlide key={index}>
-              {({ isActive }) => (
-                <HeroItems item={item} className={isActive ? "active" : ""} />
-              )}
-            </SwiperSlide>
-          ))}
-      </Swiper>
-
-    </div>
+    <>
+      <div className="hero">
+        <Swiper
+          modules={[Autoplay]}
+          grabCursor={true}
+          spaceBetween={0}
+          slidesPerView={1}
+          // autoplay={{delay:3000}}
+        >
+          {movieItems &&
+            movieItems.length > 0 &&
+            movieItems.map((item, index) => (
+              <SwiperSlide key={index}>
+                {({ isActive }) => (
+                  <HeroItems item={item} className={isActive ? "active" : ""} watchTrailerMovie={watchTrailerMovie} />
+                )}
+              </SwiperSlide>
+            ))}
+        </Swiper>
+      </div>
+      {
+        activeModal &&  <ModalTrailer item={movieItem} active={activeModal} closeModal={() => setActiveModal(false)}></ModalTrailer>
+      }
+     
+    </>
   );
 };
 
-const HeroItems = ({ item, className }) => {
+const HeroItems = ({ item, className,watchTrailerMovie }) => {
 
-  const [activeModal, setActiveModal] = useState(false)
+
   const history = useHistory();
   const background =
     item && apiConfig.originalImage(item.backdrop_path)
       ? apiConfig.originalImage(item.backdrop_path)
       : apiConfig.originalImage(item.backdrop_path);
 
-  const watchTrailer = (id) => {
-
-    setActiveModal(true)
-  }
   return (
     <div
       className={`hero__item ${className ? className : ""}`}
@@ -80,7 +85,7 @@ const HeroItems = ({ item, className }) => {
             <Btn onClick={() => history.push("/movie" + item.id)}>
               Watch now
             </Btn>
-            <Btn className="btn-outline" onClick={() => watchTrailer(item.id)}>
+            <Btn className="btn-outline" onClick={() =>  watchTrailerMovie(item)}>
               Watch trailer
             </Btn>
           </div>
@@ -90,7 +95,6 @@ const HeroItems = ({ item, className }) => {
           <img src={apiConfig.w500Image(item.poster_path)} alt={item.title} />
         </div>
       </div>
-      <ModalTrailer item={item} active={activeModal}></ModalTrailer>
     </div>
   );
 };

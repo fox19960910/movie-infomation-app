@@ -19,8 +19,9 @@
         background-color:$body-bg;
         width:50%;
         position: relative;
+        animation: moveDown 0.5s;
         @include tablet {
-            width: 80%;
+            width: 90%;
         }
     }
     &__close{
@@ -38,5 +39,10 @@
 }
 
 @keyframes moveDown{
-    
+    0%{
+        transform:translateY(-100%);
+    }
+    100%{
+        transform:translateY(0);
+    }
 }
