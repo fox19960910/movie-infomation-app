@@ -16,7 +16,7 @@ const movieApi = {
         return axiosClient.get(url,{params:{}})
     },
     search : (cat, params) => {
-        const url =  'search' + category[cat];
+        const url =  'search/' + category[cat];
         return axiosClient.get(url,params)
     },
     detail : (cat,id, params) => {

@@ -9,6 +9,8 @@ const Routes = (props) => {
     <Switch>
       <Route path="/:category/search/:keyword" component={Catalog} />
 
+      <Route path="/:category/type/:type" component={Catalog} />
+
       <Route path="/:category/:id" component={Detail} />
 
       <Route path="/:category/" component={Catalog} />
