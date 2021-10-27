@@ -6,33 +6,33 @@ import MovieGrid from '../components/MovieGrid';
 
 const Catalog = () => {
     const {category,type} = useParams()
-    console.log('category',category,'type',type)
-
     const renderPageHeader = () => {
         let title = null
         if(type){
             if( category === CATEGORIES.movie){
                 switch(type) {
-                    case type === movieType.popular:
-                        title = 'Trending Movies'
+                    case movieType.popular:
+                        title = 'Trending Movies';
                     break;
-                    case type === movieType.top_rated:
-                        title = 'Top rated Movies'
+                    case movieType.top_rated:
+                        title = 'Top rated Movies';
                     break;
-                    case type === movieType.upcoming:
+                    case movieType.upcoming:
+                        title = 'Upcoming Movies';
+                    break;
+                    default:
                         title = 'Upcoming Movies'
-                    break;
                 }
             }
             else{
                 switch(type) {
-                    case type === tvType.popular:
+                    case tvType.popular:
                         title = 'Trending TV series'
                     break;
-                    case type === tvType.top_rated:
+                    case tvType.top_rated:
                         title = 'Top rated TV series'
                     break;
-                    case type === tvType.on_the_air:
+                    case tvType.on_the_air:
                         title = 'On the air TV series'
                     break;
                 }
@@ -40,13 +40,14 @@ const Catalog = () => {
         }else{
             category === CATEGORIES.movie ? title = 'Movies' : title = 'TV Series'
         }
+        return title
 
     }
     return (
         <div className="catalog-page">
             <PageTemplate >
                 <PageTemplate.Header>
-                    {renderPageHeader}
+                    {renderPageHeader()}
                 </PageTemplate.Header>
 
                 <PageTemplate.Body>

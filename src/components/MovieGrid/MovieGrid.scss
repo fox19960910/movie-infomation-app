@@ -13,3 +13,18 @@
         @include flex(center,center)
     }
 }
+
+.movie-search{
+    position: relative;
+    display: inline-block;
+    &__icon{
+        @include flex(center,center);
+        position: absolute;
+        width: 35px;
+        height: 35px;
+        top:50%;
+        right:5px;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+}

@@ -65,7 +65,7 @@ const MovieGrid = (props) => {
     return (
         <>
             <div className="section mb-3">
-                <MovieSearch category={props.category} keyword={keyword} />
+                <MovieSearch category={props.category} keyword={keyword} type={props.type }/>
             </div>
             <div className="movie-grid">
                 {
@@ -91,11 +91,17 @@ const MovieSearch = (props) => {
     const history =  useHistory();
 
     const [keyword, setKeyword] = useState(props.keyword ? props.keyword :'')
-
     const pressSearch = useCallback(
         () => {
             if(keyword.trim().length >0 ){
                 history.push(`/${CATEGORIES[props.category]}/search/${keyword}`)
+            }else{
+                if(props.type){
+                    history.push(`/${CATEGORIES[props.category]}/type/${props.type}`)
+                }else{
+                    history.push(`/${CATEGORIES[props.category]}`)
+                }
+               
             }
         },
         [keyword,props.category,history],
@@ -121,6 +127,9 @@ const MovieSearch = (props) => {
                 value={keyword}
                 onChange={(e) => setKeyword(e.target.value)}
                 />
+            <div className="movie-search__icon" onClick={() => pressSearch()}>
+                <i className="bx bx-search"></i>
+            </div>
         </div>
     )
 }

@@ -1,8 +1,9 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import Detail from "../pages/Detail";
+
 import Catalog from "../pages/Catalog";
 import Home from "../pages/Home";
+import Detail from "../pages/Detail/Detail"
 
 const Routes = (props) => {
   return (
