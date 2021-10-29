@@ -4,6 +4,9 @@ import movieApi from "../../api/service/movieApi";
 import apiConfig from "../../api/apiConfig";
 
 import "./Detail.scss";
+import CastList from "./CastList";
+import { category as CATEGORIES} from '../../utils/constant';
+import CircleProgressBar from "../../components/CircleProgressBar";
 const Detail = (props) => {
   const { category, id } = useParams();
   const [movieDetail, setMovieDetail] = useState(null);
@@ -15,7 +18,7 @@ const Detail = (props) => {
       if (id) {
         res = await movieApi.detail(category, id, { params });
       }
-      console.log("res", res.genres);
+      console.log("res", res.vote_average);
       setMovieDetail(res);
     };
     getMovieDetail();
@@ -46,7 +49,15 @@ const Detail = (props) => {
             <div className="movie-detail__info">
               <h2 className="movie-detail__title">
                 {movieDetail.title || movieDetail.name}
+                <span className="movie-detail__category">
+                  {category === CATEGORIES.tv ? 'Tv series' : 'Movie'}
+                </span>
               </h2>
+              <div className="movie-detail__review">
+                <div className="score">
+                  <CircleProgressBar point={movieDetail.vote_average} size={80} text="Score"/>
+                </div>
+              </div>
               <div className="movie-detail__genres">
                 {movieDetail.genres &&
                   movieDetail.genres.map((genre, index) => (
@@ -61,6 +72,7 @@ const Detail = (props) => {
                 <div className="cast-header">
                   <h2>Casts</h2>
                 </div>
+                <CastList id={movieDetail.id}/>
               </div>
             </div>
           </div>

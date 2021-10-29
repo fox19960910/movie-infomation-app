@@ -89,6 +89,7 @@
       box-shadow: $box-shadow;
       transform: scale(0);
       transition: transform 0.7s ease;
+      max-width: 26rem;
       @include landscape {
         max-width: 20rem;
       }
