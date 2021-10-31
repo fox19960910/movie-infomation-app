@@ -5,8 +5,9 @@ import apiConfig from "../../api/apiConfig";
 
 import "./Detail.scss";
 import CastList from "./CastList";
-import { category as CATEGORIES} from '../../utils/constant';
-import CircleProgressBar from "../../components/CircleProgressBar";
+import { category as CATEGORIES } from "../../utils/constant";
+import RateStar from "../../components/RateStar";
+
 const Detail = (props) => {
   const { category, id } = useParams();
   const [movieDetail, setMovieDetail] = useState(null);
@@ -50,13 +51,24 @@ const Detail = (props) => {
               <h2 className="movie-detail__title">
                 {movieDetail.title || movieDetail.name}
                 <span className="movie-detail__category">
-                  {category === CATEGORIES.tv ? 'Tv series' : 'Movie'}
+                  {category === CATEGORIES.tv ? "Tv series" : "Movie"}
                 </span>
               </h2>
               <div className="movie-detail__review">
                 <div className="score">
-                  <CircleProgressBar point={movieDetail.vote_average} size={80} text="Score"/>
+                  <RateStar starNum={10} starRate={movieDetail.vote_average} />
+                  <div className="movie-detail__label">
+                    {movieDetail.vote_average} IMDb
+                  </div>
                 </div>
+              </div>
+              <div className="movie-detail__status">
+                <span className="status movie-detail__label  movie-detail__label-1">
+                  {movieDetail.status}
+                </span>
+                <span className="release-date movie-detail__label movie-detail__label-1">
+                  {movieDetail.release_date}
+                </span>
               </div>
               <div className="movie-detail__genres">
                 {movieDetail.genres &&
@@ -72,7 +84,7 @@ const Detail = (props) => {
                 <div className="cast-header">
                   <h2>Casts</h2>
                 </div>
-                <CastList id={movieDetail.id}/>
+                <CastList id={movieDetail.id} />
               </div>
             </div>
           </div>

@@ -41,7 +41,7 @@
       max-width: 1000px;
       margin-top: -200px;
     }
-    @include landscape { 
+    @include tablet {
       margin-top: -300px;
     }
   }
@@ -72,17 +72,20 @@
   &__title {
     font-size: 4rem;
     line-height: 1;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+    @include landscape {
+      font-size: 3rem;
+    }
   }
-  &__overview{
-    color:$grey-color;
+  &__overview {
+    color: $grey-color;
   }
-  &__title &__category{
-    font-size:.8rem;
-    border:1px solid $primary-color;
-    color:$primary-color;
-    border-radius:3px;
-    padding:.3rem .5rem;
+  &__title &__category {
+    font-size: 0.8rem;
+    border: 1px solid $primary-color;
+    color: $primary-color;
+    border-radius: 3px;
+    padding: 0.3rem 0.5rem;
     vertical-align: text-top;
     display: inline-block;
     margin-top: 10px;
@@ -98,29 +101,46 @@
       border: 2px solid $grey-color;
       border-radius: $border-radius;
       font-size: 0.8rem;
-      color:$grey-color;
+      color: $grey-color;
+    }
+  }
+
+  &__status {
+    & > * ~ * {
+      display: inline-block;
+      margin-left: 0.5rem;
+    }
+  }
+  &__label {
+    font-size: 12px;
+    padding: 0.2rem 0.5rem;
+    border-radius: $border-radius;
+    background-color: $primary-light-color;
+    display: inline-block;
+
+    &-1 {
+      background-color: $primary-dark-color;
     }
   }
 }
 
-.casts{
+.casts {
   display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(90px,1fr));
-  gap:10px;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 10px;
 
-  &__item{
-
-    &-bg{
-      padding-top:160px;
-      background-size:cover;
+  &__item {
+    &-bg {
+      padding-top: 160px;
+      background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      margin-bottom: .5rem;
-      border-radius:6px;
+      margin-bottom: 0.5rem;
+      border-radius: 6px;
     }
-    &-name{
-      font-size:.8rem;
-      color:$grey-color;
+    &-name {
+      font-size: 0.8rem;
+      color: $grey-color;
     }
   }
 }
