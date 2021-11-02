@@ -7,11 +7,14 @@ import "./Detail.scss";
 import CastList from "./CastList";
 import { category as CATEGORIES } from "../../utils/constant";
 import RateStar from "../../components/RateStar";
+import ModalTrailer from "../../components/Modal/ModalTrailer";
+import MovieList from "../../components/MovieList";
 
 const Detail = (props) => {
   const { category, id } = useParams();
   const [movieDetail, setMovieDetail] = useState(null);
 
+  const [activeModal, setActiveModal] = useState(false)
   useEffect(() => {
     const getMovieDetail = async () => {
       let res = null;
@@ -19,11 +22,12 @@ const Detail = (props) => {
       if (id) {
         res = await movieApi.detail(category, id, { params });
       }
-      console.log("res", res.vote_average);
       setMovieDetail(res);
     };
     getMovieDetail();
   }, [category, id]);
+
+  
   return (
     <>
       {movieDetail && (
@@ -58,16 +62,13 @@ const Detail = (props) => {
                 <div className="score">
                   <RateStar starNum={10} starRate={movieDetail.vote_average} />
                   <div className="movie-detail__label">
-                    {movieDetail.vote_average} IMDb
+                    {movieDetail.vote_count} Voted count
                   </div>
                 </div>
-              </div>
-              <div className="movie-detail__status">
-                <span className="status movie-detail__label  movie-detail__label-1">
-                  {movieDetail.status}
-                </span>
-                <span className="release-date movie-detail__label movie-detail__label-1">
-                  {movieDetail.release_date}
+                <span className="movie-detail__trailer  movie-detail__label  movie-detail__label-2"
+                    onClick={() => setActiveModal(true)}
+                  >
+                  <i className='bx bx-play-circle'></i> Watch trailer
                 </span>
               </div>
               <div className="movie-detail__genres">
@@ -86,10 +87,21 @@ const Detail = (props) => {
                 </div>
                 <CastList id={movieDetail.id} />
               </div>
+   
             </div>
           </div>
+            <section className="section mb-3">
+              <div className="section__header mb-2">
+                  <h2>Similar {category === CATEGORIES.movie ? 'movie' : 'TV Series'}</h2>
+              </div>
+              <MovieList category={category} id={id} type="similar"/>
+            </section>          
         </div>
       )}
+
+      {
+        activeModal &&  <ModalTrailer item={movieDetail} active={activeModal} closeModal={() => setActiveModal(false)}></ModalTrailer>
+      }
     </>
   );
 };

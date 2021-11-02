@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import Btn from "../components/Button/Btn";
 import MovieList from "../components/MovieList";
 import { category, movieType, tvType } from "../utils/constant";
-
-console.log('movieType',movieType.up_coming)
 const Home = () => {
   return <section>
     <Hero/>

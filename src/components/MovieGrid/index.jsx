@@ -37,7 +37,7 @@ const MovieGrid = (props) => {
             setTotalPage(res.total_pages)
         }
         getMovieList()
-    }, [props.category, keyword])
+    }, [props.category, keyword,props.type])
 
     const loadMore = async () => {
         let res = null;
@@ -104,7 +104,7 @@ const MovieSearch = (props) => {
                
             }
         },
-        [keyword,props.category,history],
+        [keyword,props.category,history,props.type],
     )
 
     useEffect(() => {

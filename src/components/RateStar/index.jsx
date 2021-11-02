@@ -10,27 +10,25 @@ const RateStar = (props) => {
   if (isNaN(starRate) || isNaN(starNum)) {
     throw "Rate number or star number must a number";
   }
-  console.log("starNum - starRate", Math.floor(starNum - starRate));
-  const starArray = Array.from(Array(Math.floor(starNum - starRate)).keys());
-  console.log("starArray", starArray);
-  const starRateArray = Array.from(Array(starRate).keys());
-  console.log("starRateArray", starRateArray);
+
+  const starArray = Array.from(Array(starNum - Math.round(starRate)).keys());
+  const starRateArray = Array.from(Array( Math.round(starRate)).keys());
   return (
     <div className="rate-star">
       <span className="rate-star__item"></span>
       {starRateArray.length > 0 &&
         starRateArray.map((item) => (
-          <span className="rate-star__item">
+          <span className="rate-star__item" key={item}>
             <i
-              class="bx bxs-star"
+              className="bx bxs-star"
               style={{ color: color ? color : "#ffac4a" }}
             ></i>
           </span>
         ))}
       {starArray.length > 0 &&
         starArray.map((item) => (
-          <span className="rate-star__item">
-            <i class="bx bx-star"></i>
+          <span className="rate-star__item" key={item}>
+            <i className="bx bx-star"></i>
           </span>
         ))}
     </div>
