@@ -41,9 +41,6 @@
       max-width: 1000px;
       margin-top: -200px;
     }
-    @include tablet {
-      margin-top: -300px;
-    }
   }
   &__poster {
     flex: 1;
